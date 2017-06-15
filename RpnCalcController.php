@@ -37,6 +37,8 @@ class RpnCalcController extends Controller
             $newOperand = $token;
         } else {
             $operator = Operators\OperatorFactory::getOperator($token);
+	    // TODO: support optional arguments for some operations, based on token
+	    // e.g. base parameter for log()
             $newOperand = $operator->evaluate($this->operands);
         }
         array_push($this->operands, $newOperand);
